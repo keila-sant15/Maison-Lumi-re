@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polo Green - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="61Nr7W+VSDL._AC_SX679_.jpg" alt="Polo Green" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Polo Green</h1>
+                <p class="brand">Ralph Lauren</p>
+                <p>Polo Green é um clássico que transcende gerações. Um perfume que combina frescor com profundidade, elegância com masculinidade.</p>
+                <p class="perfume-price">R$ 319,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Polo Green', brand: 'Ralph Lauren', price: 'R$ 319,00', image: '61Nr7W+VSDL._AC_SX679_.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Amadeirado Chipré</strong></p>
+            <p>Uma composição robusta que combina notas verdes intensas com uma base amadeirada clássica.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Manjericão, Hortelã, Alfazema
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Tabaco, Pinho, Cominho e Cravo
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Musgo de Carvalho, Vetiver, Cedro, Couro e Patchouli
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Intenso, clássico e inconfundível. Polo Green cria uma aura de sofisticação masculina que persiste ao longo do dia.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Garrafa em tons verdes que refletem a identidade visual marcante da marca Ralph Lauren.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Versátil para dia e noite, casual e formal. Uma assinatura olfativa imprescindível.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+    </footer>
+    <script src="shared-cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            const toggleHeaderState = () => {
+                headerElement.classList.toggle('scrolled', window.scrollY > 60);
+            };
+            toggleHeaderState();
+            window.addEventListener('scroll', toggleHeaderState);
+        });
+    </script>
+</body>
+</html>

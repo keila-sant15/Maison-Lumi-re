@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="Sovereign.jpg" alt="Sovereign" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Sovereign</h1>
+                <p class="brand">Le Galion</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Amadeirado Oriental</span>
+                    <span class="info-pill">Poder Sutil</span>
+                </div>
+                <p>Sovereign, da casa Le Galion, é um perfume sofisticado, clássico e imponente. Inspirado na perfumaria francesa tradicional, ele entrega elegância refinada, riqueza olfativa e uma sensação de luxo absoluto. É uma fragrância para homens que apreciam exclusividade e poder silencioso — uma presença que não precisa gritar para ser percebida.</p>
+                <p class="perfume-price">R$ 1.260,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Sovereign', brand: 'Le Galion', price: 'R$ 1.260,00', image: 'Sovereign.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Amadeirado Oriental de Alta Perfumaria</strong></p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Especiarias nobres, Bergamota e Notas Aromáticas
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Madeiras preciosas, Resinas e Notas balsâmicas
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Âmbar, Patchouli, Musgo e um toque de couro refinado
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Sovereign abre com especiarias elegantes, evoluindo para um coração amadeirado luxuoso. O fundo traz profundidade, calor e imponência, com assinatura distinta e extremamente masculina.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Frasco requintado que reflete a sofisticação e exclusividade da perfumaria francesa tradicional.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Noites formais, ambientes sofisticados, ocasiões especiais, reuniões importantes e momentos em que você deseja transmitir autoridade, elegância e presença.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+        <p style="margin-top: 15px; font-size: 11px;">Fragrâncias que eternizam presença.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>

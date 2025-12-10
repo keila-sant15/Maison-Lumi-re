@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sauvage - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="Sauvage.jpg" alt="Sauvage" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Sauvage</h1>
+                <p class="brand">Dior</p>
+                <p>Sauvage é a essência do Dior para o homem moderno. Frescor marcante com base amadeirada quente.</p>
+                <p class="perfume-price">R$ 349,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Sauvage', brand: 'Dior', price: 'R$ 349,00', image: 'Sauvage.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Aromático Fougère</strong></p>
+            <p>Uma composição clássica que mistura frescor com calor amadeirado.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Bergamota da Calábria
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Pimenta Sichuan e Lavanda
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Ambroxan, Cedro e Patchouli
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Frescor marcante com base amadeirada quente. Simples, limpo e extremamente duradouro.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Garrafa de Dior que reflete a modernidade e elegância clássica da marca.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Versátil para dia e noite — a assinatura olfativa perfeita para qualquer momento.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+    </footer>
+    <script src="shared-cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            const toggleHeaderState = () => {
+                headerElement.classList.toggle('scrolled', window.scrollY > 60);
+            };
+            toggleHeaderState();
+            window.addEventListener('scroll', toggleHeaderState);
+        });
+    </script>
+</body>
+</html>

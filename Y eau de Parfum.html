@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y Eau de Parfum - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="Y eau de Perfume.jpg" alt="Y Eau de Parfum" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Y Eau de Parfum</h1>
+                <p class="brand">Yves Saint Laurent</p>
+                <p>Y Eau de Parfum é a personificação do homem moderno: intenso, determinado e naturalmente elegante. Uma fragrância que combina frescor aromático com profundidade amadeirada, criando uma assinatura poderosa e extremamente sedutora. É o perfume do homem que inspira, lidera e deixa seu rastro por onde passa.</p>
+                <p class="perfume-price">R$ 349,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Y Eau de Parfum', brand: 'Yves Saint Laurent', price: 'R$ 349,00', image: 'Y eau de Perfume.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Amadeirado Aromático</strong></p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Bergamota, Gengibre e Maçã Verde
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Sálvia, Gerânio e Bagas de Zimbro
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Fava Tonka, Cedro, Patchouli e Incenso
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>A abertura fresca encontra um coração aromático elegante, enquanto o fundo resinoso e amadeirado traz força e sofisticação. Um equilíbrio perfeito entre sensualidade e maturidade.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Design sofisticado e minimalista que reflete a elegância moderna e a determinação do homem Y.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Ocasiões noturnas, jantares, encontros, eventos formais e momentos em que você quer transmitir presença marcante.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+    </footer>
+    <script src="shared-cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            const toggleHeaderState = () => {
+                headerElement.classList.toggle('scrolled', window.scrollY > 60);
+            };
+            toggleHeaderState();
+            window.addEventListener('scroll', toggleHeaderState);
+        });
+    </script>
+</body>
+</html>

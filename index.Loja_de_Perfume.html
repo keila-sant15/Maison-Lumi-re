@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Lumière - Perfumaria de Luxo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product-page.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1a1a1a;
+      --secondary: #8b4769;
+      --accent: #d4af37;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --secondary-dark: #5c2c44;
+      --accent-soft: rgba(212, 175, 55, 0.18);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    body::before {
+      top: -35vh;
+      left: -20vw;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(139, 71, 105, 0.28) 0%, rgba(139, 71, 105, 0) 65%);
+    }
+
+    body::after {
+      bottom: -45vh;
+      right: -25vw;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0) 70%);
+    }
+
+    /* HEADER PREMIUM */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(18, 13, 22, 0.82);
+      backdrop-filter: blur(16px);
+      padding: 22px 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 25px 40px rgba(10, 8, 15, 0.22);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+      transition: all 0.4s ease;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 20%, rgba(212, 175, 55, 0) 80%, rgba(212, 175, 55, 0.12) 100%);
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    header.scrolled {
+      padding: 14px 72px;
+      background: rgba(18, 13, 22, 0.9);
+      box-shadow: 0 18px 40px rgba(10, 8, 15, 0.32);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+      position: relative;
+      padding-right: 45px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+      font-weight: 500;
+      padding-bottom: 8px;
+    }
+
+    .cart-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      font-size: 18px;
+      color: var(--primary);
+      transition: all 0.4s ease;
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+    }
+
+    .cart-icon:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 18px 32px rgba(212, 175, 55, 0.45);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #e74c3c;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--accent) 50%, rgba(255, 255, 255, 0) 100%);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      margin-top: 100px;
+      min-height: 70vh;
+      background: radial-gradient(circle at 5% 10%, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0) 55%),
+                  radial-gradient(circle at 90% 30%, rgba(139, 71, 105, 0.22) 0%, rgba(139, 71, 105, 0) 60%),
+                  linear-gradient(135deg, #100c15 0%, #221328 45%, #120e1a 100%);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+      gap: 40px;
+      align-items: center;
+      padding: 140px 60px 120px;
+      color: var(--white);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 65%);
+      mix-blend-mode: screen;
+      opacity: 0.35;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 55%;
+      height: 160%;
+      background: linear-gradient(120deg, rgba(212, 175, 55, 0.4) 0%, rgba(139, 71, 105, 0.05) 70%);
+      filter: blur(60px);
+      opacity: 0.35;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.75);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .hero h1 .hero-highlight {
+      color: var(--accent);
+      text-shadow: 0 10px 35px rgba(212, 175, 55, 0.45);
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      letter-spacing: 0.8px;
+      margin-bottom: 35px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 45px;
+    }
+
+    .hero-tag {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-highlight-card {
+      position: relative;
+      z-index: 1;
+      padding: 40px 32px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 50px rgba(9, 6, 14, 0.35);
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-highlight-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 85px;
+      height: 85px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0) 70%);
+      transform: translate(25%, -25%);
+    }
+
+    .hero-highlight-card .highlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .hero-highlight-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .hero-highlight-card span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ABAS E COLEÇÕES */
+    .gallery {
+      padding: 150px 60px 130px;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(244, 237, 229, 0.85) 0%, rgba(244, 237, 229, 0.45) 45%, rgba(255, 255, 255, 0) 100%);
+      z-index: -1;
+      transform: translateY(-60px);
+    }
+
+    .gallery h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      color: var(--primary);
+      letter-spacing: 2.5px;
+      margin-bottom: 18px;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      padding: 0 18px;
+    }
+
+    .gallery h2::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(139, 71, 105, 0), rgba(139, 71, 105, 0.5), rgba(139, 71, 105, 0));
+    }
+
+    .gallery-subtitle {
+      font-size: 14px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      max-width: 640px;
+      margin: 0 auto 70px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .collection-tabs {
+      display: inline-flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 60px auto 50px;
+      padding: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      backdrop-filter: blur(12px);
+    }
+
+    .tab-btn {
+      padding: 14px 34px;
+      border: none;
+      color: var(--secondary);
+      font-size: 12px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .tab-btn:hover {
+      color: var(--white);
+    }
+
+    .tab-btn:hover::after {
+      opacity: 1;
+    }
+
+    .tab-btn.active {
+      color: var(--white);
+      box-shadow: 0 18px 32px rgba(139, 71, 105, 0.25);
+    }
+
+    .tab-btn.active::after {
+      opacity: 1;
+    }
+
+    .collection-content {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .collection-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* MODAL CARRINHO */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 8, 15, 0.75);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .cart-modal.active {
+      display: flex;
+    }
+
+    .cart-modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      margin: auto;
+      padding: 50px;
+      width: 90%;
+      max-width: 620px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-strong);
+      max-height: 82vh;
+      overflow-y: auto;
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .cart-close {
+      color: var(--text);
+      float: right;
+      font-size: 28px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cart-close:hover {
+      color: var(--accent);
+    }
+
+    .cart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--primary);
+      margin-bottom: 28px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .cart-items {
+      margin-bottom: 30px;
+      border-top: 1px solid #e5e1d8;
+      padding-top: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #f0ebe5;
+    }
+
+    .cart-item-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .cart-item-info p {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .qty-btn:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .cart-item-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .remove-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .remove-btn:hover {
+      background: #c0392b;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .cart-total {
+      border-top: 2px solid var(--accent);
+      padding-top: 20px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-total-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .cart-total-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 16px;
+      margin-top: 32px;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      color: var(--white);
+      border: none;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 999px;
+      box-shadow: 0 18px 34px rgba(139, 71, 105, 0.25);
+    }
+
+    .checkout-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 42px rgba(139, 71, 105, 0.3);
+    }
+
+    .checkout-btn:disabled {
+      background: rgba(90, 90, 90, 0.25);
+      color: rgba(255, 255, 255, 0.6);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .add-cart-btn {
+      width: 100%;
+      padding: 12px 18px;
+      margin-top: 14px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(139, 71, 105, 0.4);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .add-cart-btn:hover {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 20px 34px rgba(139, 71, 105, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .perfume-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .perfume {
+      background: var(--card-glass);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.45s ease;
+      backdrop-filter: blur(18px);
+    }
+
+    .perfume::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.32) 0%, rgba(212, 175, 55, 0) 70%);
+      transition: transform 0.4s ease;
+    }
+
+    .perfume:hover {
+      transform: translateY(-14px) scale(1.01);
+      box-shadow: var(--shadow-strong);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .perfume:hover::before {
+      transform: scale(1.2);
+    }
+
+    .perfume a {
+      display: block;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .perfume img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      margin-bottom: 22px;
+      cursor: pointer;
+      transition: transform 0.45s ease;
+      border-radius: 18px;
+    }
+
+    .perfume:hover img {
+      transform: scale(1.06);
+    }
+
+    .perfume h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .perfume-description {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .perfume-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--secondary);
+      margin-top: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #120c1a 0%, #1d1326 50%, #120c1a 100%);
+      color: var(--white);
+      padding: 80px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 140%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(212, 175, 55, 0) 70%);
+      opacity: 0.4;
+    }
+
+    footer p {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1024px) {
+      header {
+        padding: 18px 40px;
+      }
+
+      header.scrolled {
+        padding: 12px 40px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
+        padding: 120px 40px 110px;
+        gap: 30px;
+      }
+
+      .hero-highlight-card {
+        padding: 32px 28px;
+      }
+
+      .gallery {
+        padding: 130px 40px 110px;
+      }
+
+      .perfume-grid {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 18px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      header::after {
+        display: none;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      nav ul {
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        letter-spacing: 1.8px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 110px 24px 100px;
+        text-align: center;
+        gap: 50px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-tags {
+        justify-content: center;
+      }
+
+      .hero-highlight-card {
+        max-width: 360px;
+        margin: 0 auto;
+        order: 3;
+      }
+
+      .gallery {
+        padding: 110px 24px 100px;
+      }
+
+      .collection-tabs {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .perfume-grid {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 26px;
+        padding-right: 0;
+      }
+
+      .logo::after {
+        display: none;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 100px 18px 90px;
+        gap: 40px;
+      }
+
+      .hero-badge {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+      }
+
+      .hero-tags {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .hero-tag {
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .hero-highlight-card {
+        padding: 26px 22px;
+      }
+
+      .gallery h2 {
+        font-size: 2rem;
+      }
+
+      .gallery-subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 50px;
+      }
+
+      .collection-tabs {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .tab-btn {
+        width: 100%;
+        padding: 12px 24px;
+      }
+
+      .perfume-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .perfume img {
+        height: 220px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Maison Lumière</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">← Voltar</a></li>
+        <li><a href="#colecoes">Coleções</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+        🛍️
+        <span class="cart-count" data-cart-count>0</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Boutique Maison</span>
+      <h1><span class="hero-highlight">Coleções</span> Exclusivas</h1>
+      <p class="hero-subtitle">Explore curadorias autorais para cada ocasião: femininas, masculinas e edições limitadas que traduzem personalidade com sofisticação.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Feminino</span>
+        <span class="hero-tag">Masculino</span>
+        <span class="hero-tag">Edições Limitadas</span>
+      </div>
+    </div>
+    <div class="hero-highlight-card">
+      <div class="highlight-title">Curadoria Personalizada</div>
+      <p>Agende um atendimento privado e receba recomendações sob medida, pensadas para o seu estilo e momento.</p>
+      <span>Fale com nosso concierge</span>
+    </div>
+  </section>
+
+  <!-- COLEÇÕES -->
+  <section id="colecoes" class="gallery">
+    <h2>Coleções Exclusivas</h2>
+    <p class="gallery-subtitle">Seleções inspiradas em destinos, memórias e sensações — prontas para transformar sua rotina em um ritual de sofisticação.</p>
+    
+    <div class="collection-tabs">
+      <button class="tab-btn active" data-collection="feminino" onclick="showCollection('feminino', this)">Coleção Feminina</button>
+      <button class="tab-btn" data-collection="masculino" onclick="showCollection('masculino', this)">Coleção Masculina</button>
+      <button class="tab-btn" data-collection="limitada" onclick="showCollection('limitada', this)">Edições Limitadas</button>
+    </div>
+
+    <!-- COLEÇÃO FEMININA -->
+    <div id="feminino" class="collection-content active">
+      <div class="perfume-grid">
+        <div class="perfume">
+          <a href="la-vie-est-belle.html"><img src="La vie est belle lancôme perfume.jpg" alt="La Vie Est Belle"></a>
+          <h3>La Vie Est Belle</h3>
+          <p class="perfume-description">Lancome</p>
+          <p class="perfume-price">R$ 1.199,00</p>
+        </div>
+        <div class="perfume">
+          <a href="jadore.html"><img src="jandore.webp" alt="J'adore Dior"></a>
+          <h3>J'adore Eau de Parfum</h3>
+          <p class="perfume-description">Christian Dior</p>
+          <p class="perfume-price">R$ 1.085,00</p>
+        </div>
+        <div class="perfume">
+          <a href="rouge-royal.html"><img src="Rouge Royal.jpg" alt="Rouge Royal"></a>
+          <h3>Rouge Royal</h3>
+          <p class="perfume-description">Princesse Marina de Bourbon</p>
+          <p class="perfume-price">R$ 339,90</p>
+        </div>
+        <div class="perfume">
+          <a href="angel.html"><img src="Angel.jpg" alt="Angel Mugler"></a>
+          <h3>Angel Mugler</h3>
+          <p class="perfume-description">Thierry Mugler</p>
+          <p class="perfume-price">R$ 1.299,00</p>
+        </div>
+        <div class="perfume">
+          <a href="la-nuit-tresor.html"><img src="Tresor-La-Nuit-Feminino-de-Lancome-Eau-de-Parfum.webp" alt="La Nuit Trésor"></a>
+          <h3>La Nuit Trésor</h3>
+          <p class="perfume-description">Lancôme</p>
+          <p class="perfume-price">R$ 1.099,00</p>
+        </div>
+        <div class="perfume">
+          <a href="nuit-dor.html"><img src="Nuit D'or.jpg" alt="Nuit D'Or"></a>
+          <h3>Nuit D'Or</h3>
+          <p class="perfume-description">Elysees Fashion</p>
+          <p class="perfume-price">R$ 200,00</p>
+        </div>
+        <div class="perfume">
+          <a href="scandal.html"><img src="51TdRvcpJRL._AC_SL1000_.jpg" alt="Scandal"></a>
+          <h3>Scandal</h3>
+          <p class="perfume-description">Jean Paul Gaultier</p>
+          <p class="perfume-price">R$ 979,00</p>
+        </div>
+        <div class="perfume">
+          <a href="nina.html"><img src="Nina Ricci.webp" alt="Nina"></a>
+          <h3>Nina</h3>
+          <p class="perfume-description">Nina Ricci</p>
+          <p class="perfume-price">R$ 399,00</p>
+        </div>
+        <div class="perfume">
+          <a href="good-girl.html"><img src="61Nwm0U8YyL._AC_SX679_.jpg" alt="Good Girl"></a>
+          <h3>Good Girl</h3>
+          <p class="perfume-description">Carolina Herrera</p>
+          <p class="perfume-price">R$ 1.069,00</p>
+        </div>
+        <div class="perfume">
+          <a href="chloe.html"><img src="Chloé.jpg" alt="Chloé"></a>
+          <h3>Chloé</h3>
+          <p class="perfume-description">Chloé</p>
+          <p class="perfume-price">R$ 999,00</p>
+        </div>
+        <div class="perfume">
+          <a href="libre.html"><img src="Banner-Libre-Yves-Saint-Laurent-Eau-de-Parfum-01.webp" alt="Libre"></a>
+          <h3>Libre</h3>
+          <p class="perfume-description">Yves Saint Laurent</p>
+          <p class="perfume-price">R$ 1.099,00</p>
+        </div>
+        <div class="perfume">
+          <a href="la-belle.html"><img src="la-belle Jean Paul.jpg" alt="La Belle"></a>
+          <h3>La Belle</h3>
+          <p class="perfume-description">Jean Paul Gaultier</p>
+          <p class="perfume-price">R$ 999,00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLEÇÃO MASCULINA -->
+    <div id="masculino" class="collection-content">
+      <div class="perfume-grid">
+        <div class="perfume" data-perfume-card>
+          <a href="le-male.html"><img src="Le Male-O Azul.webp" alt="Le Male" data-perfume-img></a>
+          <h3>Le Male</h3>
+          <p class="perfume-description">Jean Paul Gaultier</p>
+          <p class="perfume-price">R$ 1.019,00</p>
+        </div>
+        <div class="perfume" data-perfume-card>
+          <a href="le-male-le-parfum.html"><img src="Le-Male-Le-Parfum-De-Jean-Paul-Gaultier-Masculino.webp" alt="Le Male Le Parfum" data-perfume-img></a>
+          <h3>Le Male Le Parfum</h3>
+          <p class="perfume-description">Jean Paul Gaultier</p>
+          <p class="perfume-price">R$ 941,00</p>
+        </div>
+        <div class="perfume">
+          <a href="polo-green.html"><img src="61Nr7W+VSDL._AC_SX679_.jpg" alt="Polo Green"></a>
+          <h3>Polo Green</h3>
+          <p class="perfume-description">Ralph Lauren</p>
+          <p class="perfume-price">R$ 969,00</p>
+        </div>
+        <div class="perfume">
+          <a href="sovereign.html"><img src="Sovereign.jpg" alt="Sovereign"></a>
+          <h3>Sovereign</h3>
+          <p class="perfume-description">Le Galion</p>
+          <p class="perfume-price">R$ 1.260,00</p>
+        </div>
+        <div class="perfume">
+          <a href="Y eau de Parfum.html"><img src="Y eau de Perfume.jpg" alt="Y Eau de Parfum"></a>
+          <h3>Y Eau de Parfum</h3>
+          <p class="perfume-description">Yves Saint Laurent</p>
+          <p class="perfume-price">R$ 1.039,00</p>
+        </div>
+        <div class="perfume">
+          <a href="one-million.html"><img src="1 Milion Masculino.jpg" alt="1 Million"></a>
+          <h3>1 Million</h3>
+          <p class="perfume-description">Paco Rabanne</p>
+          <p class="perfume-price">R$ 1.129,00</p>
+        </div>
+        <div class="perfume">
+          <a href="eau-sauvage.html"><img src="b06fc20b-4da2-4d3c-8c71-d9630c39f0a5-eau-sauvage-dior-eau-de-toilette-perfume-masculino-100ml.webp" alt="Eau Sauvage"></a>
+          <h3>Eau Sauvage</h3>
+          <p class="perfume-description">Dior</p>
+          <p class="perfume-price">R$ 835,00</p>
+        </div>
+        <div class="perfume">
+          <a href="sauvage.html"><img src="Sauvage.jpg" alt="Sauvage"></a>
+          <h3>Sauvage</h3>
+          <p class="perfume-description">Dior</p>
+          <p class="perfume-price">R$ 1.255,00</p>
+        </div>
+        <div class="perfume">
+          <a href="bleu-on-chanel.html"><img src="Bleu on Chanel.jpg" alt="Bleu de Chanel"></a>
+          <h3>Bleu de Chanel</h3>
+          <p class="perfume-description">Chanel</p>
+          <p class="perfume-price">R$ 1.100,00</p>
+        </div>
+        <div class="perfume">
+          <a href="invictus.html"><img src="invictus perfume.jpg" alt="Invictus"></a>
+          <h3>Invictus</h3>
+          <p class="perfume-description">Paco Rabanne</p>
+          <p class="perfume-price">R$ 1.129,00</p>
+        </div>
+        <div class="perfume">
+          <a href="acqua-di-gio.html"><img src="1000x1000-Acqua-Di-Gio.webp" alt="Acqua di Giò"></a>
+          <h3>Acqua di Giò</h3>
+          <p class="perfume-description">Giorgio Armani</p>
+          <p class="perfume-price">R$ 999,00</p>
+        </div>
+        <div class="perfume">
+          <a href="ultra-male.html"><img src="jean-paul-gaultier-ultra-male-edt-75ml-за-мъже~28843.jpg" alt="Ultra Male"></a>
+          <h3>Ultra Male</h3>
+          <p class="perfume-description">Jean Paul Gaultier</p>
+          <p class="perfume-price">R$ 739,00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIÇÕES LIMITADAS -->
+    <div id="limitada" class="collection-content">
+      <div class="perfume-grid">
+        <div class="perfume">
+          <a href="rouge-royal.html"><img src="Rouge Royal.jpg" alt="Rouge Royal"></a>
+          <h3>Rouge Royal</h3>
+          <p class="perfume-description">Princesse Marina de Bourbon</p>
+          <p class="perfume-price">R$ 339,90</p>
+        </div>
+        <div class="perfume">
+          <a href="sovereign.html"><img src="Sovereign.jpg" alt="Sovereign"></a>
+          <h3>Sovereign</h3>
+          <p class="perfume-description">Le Galion</p>
+          <p class="perfume-price">R$ 1.260,00</p>
+        </div>
+        <div class="perfume">
+          <a href="la-nuit-tresor.html"><img src="Tresor-La-Nuit-Feminino-de-Lancome-Eau-de-Parfum.webp" alt="La Nuit Trésor"></a>
+          <h3>La Nuit Trésor</h3>
+          <p class="perfume-description">Lancôme</p>
+          <p class="perfume-price">R$ 1.099,00</p>
+        </div>
+        <div class="perfume">
+          <a href="one-million.html"><img src="1 Milion Masculino.jpg" alt="1 Million"></a>
+          <h3>1 Million Gold Deluxe</h3>
+          <p class="perfume-description">Paco Rabanne</p>
+          <p class="perfume-price">R$ 1.129,00</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <script src="shared-cart.js"></script>
+  <script>
+    function showCollection(type, button) {
+      document.querySelectorAll('.collection-content').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetSection = document.getElementById(type);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      if (button) {
+        button.classList.add('active');
+      } else {
+        const fallback = document.querySelector(`.tab-btn[data-collection="${type}"]`);
+        if (fallback) {
+          fallback.classList.add('active');
+        }
+      }
+    }
+
+    function handleScrollHeader() {
+      const headerElement = document.querySelector('header');
+      if (!headerElement) return;
+      headerElement.classList.toggle('scrolled', window.scrollY > 60);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof updateCartCount === 'function') {
+        updateCartCount();
+      }
+
+      handleScrollHeader();
+      window.addEventListener('scroll', handleScrollHeader);
+
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get('cat');
+      const available = ['feminino', 'masculino', 'limitada'];
+      if (available.includes(category)) {
+        const targetBtn = document.querySelector(`.tab-btn[data-collection="${category}"]`);
+        showCollection(category, targetBtn);
+      } else {
+        const defaultBtn = document.querySelector('.tab-btn[data-collection="feminino"]');
+        showCollection('feminino', defaultBtn);
+      }
+    });
+  </script>
+
+  <footer id="contato">
+    <p>&copy; 2025 MAISON LUMIÈRE — PERFUMARIA DE LUXO</p>
+    <p style="margin-top: 15px; font-size: 11px;">Coleções criadas para despertar memórias inesquecíveis.</p>
+  </footer>
+
+  <!-- MODAL CARRINHO -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-modal-content">
+      <span class="cart-close" onclick="toggleCart()">&times;</span>
+      <h2 class="cart-title">Seu Carrinho</h2>
+      <div id="cartItemsContainer" class="cart-items"></div>
+      <div id="cartTotal" class="cart-total" style="display: none;">
+        <span class="cart-total-label">Total:</span>
+        <span class="cart-total-value" id="totalValue">R$ 0,00</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="goToCheckout()" disabled>Ir para Checkout</button>
+    </div>
+  </div>
+</body>
+</html>
