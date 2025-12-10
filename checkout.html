@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Maison Lumière</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1a1a1a;
+      --secondary: #8b4769;
+      --accent: #d4af37;
+      --light-bg: #f5f1ed;
+      --white: #ffffff;
+      --text: #2c2c2c;
+      --text-light: #666;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      padding: 20px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26, 26, 26, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .back-btn {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      color: var(--accent);
+    }
+
+    .cart-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 8px 16px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cart-icon:hover {
+      transform: translateY(-2px);
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    .cart-count {
+      font-size: 12px;
+      background: var(--accent);
+      color: var(--primary);
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 100px auto 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .checkout-section {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e1d8;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--primary);
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d4a574;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .order-summary {
+      background: var(--light-bg);
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e1d8;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .item-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 2px solid var(--accent);
+      margin-top: 20px;
+    }
+
+    .total-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .total-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+      background: #6a3352;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 60px 20px;
+      grid-column: 1 / -1;
+    }
+
+    .empty-cart h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .empty-cart p {
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+
+    .empty-cart a {
+      display: inline-block;
+      padding: 12px 40px;
+      background: var(--secondary);
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .empty-cart a:hover {
+      background: #6a3352;
+    }
+
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      margin-top: 60px;
+    }
+
+    footer p {
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #aaa;
+    }
+
+    .success-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      z-index: 3000;
+      text-align: center;
+      min-width: 300px;
+    }
+
+    .success-message h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary);
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .success-message p {
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    .success-message .close-success {
+      display: inline-block;
+      padding: 10px 30px;
+      background: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .success-message .close-success:hover {
+      background: #b8941d;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 15px 30px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Maison Lumière</div>
+    <div class="header-actions">
+      <a href="index.html" class="back-btn">← Voltar</a>
+      <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+        🛍️
+        <span class="cart-count" data-cart-count>0</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" id="checkoutContainer">
+    <!-- FORMULÁRIO -->
+    <div class="checkout-section">
+      <h2 class="section-title">Informações Pessoais</h2>
+      <form id="checkoutForm" onsubmit="submitOrder(event)">
+        
+        <div class="form-group">
+          <label>Nome Completo *</label>
+          <input type="text" name="fullName" required placeholder="Seu nome completo">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" name="email" required placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Telefone *</label>
+            <input type="tel" name="phone" required placeholder="(11) 99999-9999">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Endereço *</label>
+          <input type="text" name="address" required placeholder="Rua, número, complemento">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Cidade *</label>
+            <input type="text" name="city" required placeholder="Sua cidade">
+          </div>
+          <div class="form-group">
+            <label>Estado *</label>
+            <select name="state" required>
+              <option value="">Selecione...</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>CEP *</label>
+          <input type="text" name="cep" required placeholder="00000-000">
+        </div>
+
+        <div class="form-group">
+          <label>Método de Pagamento *</label>
+          <select name="paymentMethod" required>
+            <option value="">Selecione...</option>
+            <option value="credit">Cartão de Crédito</option>
+            <option value="debit">Cartão de Débito</option>
+            <option value="pix">PIX</option>
+            <option value="transfer">Transferência Bancária</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Finalizar Compra</button>
+      </form>
+    </div>
+
+    <!-- RESUMO DO PEDIDO -->
+    <div class="checkout-section">
+      <h2 class="section-title">Resumo do Pedido</h2>
+      <div class="order-summary" id="orderSummary"></div>
+    </div>
+  </div>
+
+  <div class="empty-cart" id="emptyCartMessage" style="display: none;">
+    <h2>Seu carrinho está vazio</h2>
+    <p>Adicione produtos antes de fazer checkout.</p>
+    <a href="index.html">Voltar à Loja</a>
+  </div>
+
+  <!-- MENSAGEM DE SUCESSO -->
+  <div id="successMessage" class="success-message">
+    <h2>✓ Pedido Realizado!</h2>
+    <p>Obrigado pela sua compra. Você receberá um email de confirmação em breve.</p>
+    <a href="index.html" class="close-success">Voltar à Home</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MAISON LUMIÈRE — PERFUMARIA DE LUXO</p>
+  </footer>
+
+  <script src="shared-cart.js"></script>
+  <script>
+    let cart = [];
+
+    function syncCartData() {
+      if (typeof getCartItems === 'function') {
+        cart = getCartItems();
+      } else {
+        try {
+          const stored = localStorage.getItem('cart');
+          cart = stored ? JSON.parse(stored) : [];
+        } catch (error) {
+          cart = [];
+        }
+      }
+    }
+
+    function showEmptyState(shouldShow) {
+      const layout = document.getElementById('checkoutContainer');
+      const emptyMessage = document.getElementById('emptyCartMessage');
+      if (layout) {
+        layout.style.display = shouldShow ? 'none' : 'grid';
+      }
+      if (emptyMessage) {
+        emptyMessage.style.display = shouldShow ? 'block' : 'none';
+      }
+    }
+
+    function formatCurrency(value) {
+      return `R$ ${value.toFixed(2).replace('.', ',')}`;
+    }
+
+    function parseCurrency(value) {
+      if (typeof value === 'number') {
+        return value;
+      }
+      if (typeof value !== 'string') {
+        return 0;
+      }
+      const normalized = value.replace(/[^0-9,]/g, '').replace(',', '.');
+      const parsed = parseFloat(normalized);
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
+
+    function renderOrderSummary() {
+      syncCartData();
+      const container = document.getElementById('orderSummary');
+      if (!container) {
+        return;
+      }
+
+      if (!cart.length) {
+        container.innerHTML = '';
+        showEmptyState(true);
+        return;
+      }
+
+      showEmptyState(false);
+
+      let total = 0;
+      const itemsHtml = cart.map(item => {
+        const price = parseCurrency(item.price);
+        const qty = item.qty || 0;
+        const itemTotal = price * qty;
+        total += itemTotal;
+
+        return [
+          '<div class="order-item">',
+          '  <div>',
+          `    <div style="font-weight: 600; margin-bottom: 3px;">${item.name}</div>`,
+          `    <div class="item-name">${item.brand || ''} | Qtd: ${qty}</div>`,
+          '  </div>',
+          `  <div class="item-price">${formatCurrency(itemTotal)}</div>`,
+          '</div>'
+        ].join('');
+      }).join('');
+
+      const totalHtml = [
+        '<div class="order-total">',
+        '  <span class="total-label">Total:</span>',
+        `  <span class="total-value">${formatCurrency(total)}</span>`,
+        '</div>'
+      ].join('');
+
+      container.innerHTML = itemsHtml + totalHtml;
+    }
+
+    function submitOrder(event) {
+      event.preventDefault();
+      syncCartData();
+
+      if (!cart.length) {
+        if (typeof window.showToast === 'function') {
+          window.showToast('Adicione produtos ao carrinho para finalizar.', 'warning');
+        }
+        return;
+      }
+
+      const formData = new FormData(event.target);
+      const orderData = {
+        customer: Object.fromEntries(formData),
+        items: cart,
+        date: new Date().toLocaleString('pt-BR'),
+        orderId: 'ML' + Date.now()
+      };
+
+      const orders = JSON.parse(localStorage.getItem('orders')) || [];
+      orders.push(orderData);
+      localStorage.setItem('orders', JSON.stringify(orders));
+
+      if (typeof clearCart === 'function') {
+        clearCart();
+      } else {
+        localStorage.removeItem('cart');
+      }
+
+      cart = [];
+      renderOrderSummary();
+
+      document.getElementById('successMessage').style.display = 'block';
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderOrderSummary();
+
+      if (typeof window.renderCart === 'function') {
+        const originalRenderCart = window.renderCart;
+        window.renderCart = function(...args) {
+          const result = originalRenderCart.apply(this, args);
+          renderOrderSummary();
+          return result;
+        };
+      }
+
+      window.addEventListener('storage', renderOrderSummary);
+    });
+  </script>
+</body>
+</html>

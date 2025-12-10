@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Nuit Trésor - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+                <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                    🛍️
+                    <span class="cart-count" data-cart-count>0</span>
+                </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="Tresor-La-Nuit-Feminino-de-Lancome-Eau-de-Parfum.webp" alt="La Nuit Trésor" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>La Nuit Trésor</h1>
+                <p class="brand">Lancôme</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Oriental Gourmand</span>
+                    <span class="info-pill">Romance Noturno</span>
+                </div>
+                <p>La Nuit Trésor é sedução em alta voltagem: rosa negra, orquídea de baunilha e acordes caramelizados criam uma aura hipnótica e apaixonante.</p>
+                <p class="perfume-price">R$ 1.099,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'La Nuit Trésor', brand: 'Lancôme', price: 'R$ 1.099,00', image: 'Tresor-La-Nuit-Feminino-de-Lancome-Eau-de-Parfum.webp'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Oriental Gourmand Floral</strong></p>
+            <p>Uma composição envolvente que equilibra doçura caramelizada com flores exóticas e notas ambaradas.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide"><strong>Notas de topo:</strong> Framboesa, Lichia e Bergamota</div>
+            <div class="piramide"><strong>Notas de coração:</strong> Rosa Negra, Orquídea Tahitensis e Jasmim</div>
+            <div class="piramide"><strong>Notas de fundo:</strong> Praliné, Patchouli, Incenso e Baunilha</div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Luxuosa e aveludada, abre com frutas suculentas e evolui para um coração floral escuro. O fundo gourmand prolonga o romance pela noite.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>O icônico diamante em vidro fumê com laço de cetim simboliza o charme misterioso e o glamour noturno de Lancôme.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Ideal para encontros especiais, eventos noturnos e momentos em que você deseja encantar com feminilidade intensa.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+        <p style="margin-top: 15px; font-size: 11px;">Fragrâncias que eternizam presença.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>

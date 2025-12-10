@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J'adore - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="jandore.webp" alt="J'adore Dior" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>J'adore</h1>
+                <p class="brand">Christian Dior</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Floral Oriental</span>
+                    <span class="info-pill">Luxo Radiante</span>
+                </div>
+                <p>J'adore é o clássico feminino que une elegância e sensualidade. Uma fragrância floral que celebra a mulher em sua essência.</p>
+                <p class="perfume-price">R$ 1.085,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'J\'adore', brand: 'Christian Dior', price: 'R$ 1.085,00', image: 'jandore.webp'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Floral Oriental Frutado</strong></p>
+            <p>Uma composição que mistura flores nobres com frutas exóticas e base quente.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Bergamota e Tangerina
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Rosa, Jasmim e Orquídea
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Âmbar, Almíscaro e Baunilha
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Radiante e sensual, J'adore celebra a mulher em sua plenitude. Uma aura sofisticada e irresistivelmente feminina que deixa um rastro inesquecível.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Frasco dourado e elegante, inspirado nas curvas femininas, adornado com um colar de fios finos - símbolo da alta-costura Dior.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Perfeito para ocasiões especiais ou momentos em que deseja exalar confiança e elegância absoluta.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>

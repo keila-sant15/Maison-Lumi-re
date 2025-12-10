@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Girl - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="61Nwm0U8YyL._AC_SX679_.jpg" alt="Good Girl Carolina Herrera" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Good Girl</h1>
+                <p class="brand">Carolina Herrera</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Floral Oriental</span>
+                    <span class="info-pill">Sedução Noturna</span>
+                </div>
+                <p>Good Girl é audacioso, sedutor e sofisticado. Um perfume que celebra a mulher moderna, confiante e independente.</p>
+                <p class="perfume-price">R$ 1.069,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Good Girl', brand: 'Carolina Herrera', price: 'R$ 1.069,00', image: '61Nwm0U8YyL._AC_SX679_.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Floral Amadeirado Oriental</strong></p>
+            <p>Uma fusão sofisticada de flores exóticas, especiarias e notas amadeiradas quentes.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Amêndoa e Cravo
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Flor de Laranjeira e Tuberosa
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Âmbar, Baunilha e Cedro
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Doce, sensual e sofisticada. Good Girl combina a força com a elegância, deixando um rastro marcante e irresistível.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Garrafa elegante em tons dourados que reflete o luxo e a feminilidade da marca Carolina Herrera.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Ideal para noite, encontros especiais e momentos em que você quer deixar uma impressão inesquecível.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+        <p style="margin-top: 15px; font-size: 11px;">Fragrâncias que eternizam presença.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>

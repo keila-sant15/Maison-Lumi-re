@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Male - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="jean-paul-gaultier-ultra-male-edt-75ml-за-мъже~28843.jpg" alt="Ultra Male" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Ultra Male</h1>
+                <p class="brand">Jean Paul Gaultier</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Oriental Especiado</span>
+                    <span class="info-pill">Noite Intensa</span>
+                </div>
+                <p>Ultra Male é a intensidade extrema. Uma fragrância especiada quente e sensual de Jean Paul Gaultier.</p>
+                <p class="perfume-price">R$ 739,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Ultra Male', brand: 'Jean Paul Gaultier', price: 'R$ 739,00', image: 'jean-paul-gaultier-ultra-male-edt-75ml-за-мъже~28843.jpg'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Aromático Oriental</strong></p>
+            <p>Uma composição intensa que mistura especiarias quentes com doçura de vanila.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Gengibre e Lavanda
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Cardamomo e Orquídea
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Vanila e Cedro
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Potente e duradoura, Ultra Male é uma declaração de masculinidade audaciosa e sensual.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Garrafa com design contemporâneo de Jean Paul Gaultier, refletindo a intensidade da fragrância.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Ideal para noites quentes e ocasiões onde você quer deixar uma impressão ousada e marcante.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>

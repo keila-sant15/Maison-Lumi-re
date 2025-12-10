@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acqua di Giò - Maison Lumière</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">✨ Maison Lumière</div>
+        <nav>
+            <ul>
+                <li><a href="index.Loja_de_Perfume.html">← Voltar</a></li>
+            </ul>
+            <div class="cart-icon" data-cart-icon onclick="toggleCart()">
+                🛍️
+                <span class="cart-count" data-cart-count>0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="index.Loja_de_Perfume.html" class="voltar">← Voltar à Coleção</a>
+
+        <div class="perfume-header">
+            <div>
+                <img src="1000x1000-Acqua-Di-Gio.webp" alt="Acqua di Giò" data-perfume-hero>
+            </div>
+            <div class="perfume-info">
+                <h1>Acqua di Giò</h1>
+                <p class="brand">Giorgio Armani</p>
+                <div class="info-pill-group">
+                    <span class="info-pill">Aquático Aromático</span>
+                    <span class="info-pill">Frescor Absoluto</span>
+                </div>
+                <p>Acqua di Giò é frescor absoluto. Uma fragrância aquática que traz a essência do mar e da natureza pura.</p>
+                <p class="perfume-price">R$ 999,00</p>
+                <button class="add-cart-btn" onclick="addToCart({name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 'R$ 999,00', image: '1000x1000-Acqua-Di-Gio.webp'}, this)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+
+        <section id="familia">
+            <h2>Família Olfativa</h2>
+            <p><strong>Aquático Aromático</strong></p>
+            <p>Uma composição que traz a sensação de frescor aquático puro.</p>
+        </section>
+
+        <section id="piramide">
+            <h2>Pirâmide Olfativa</h2>
+            <div class="piramide">
+                <strong>Notas de topo:</strong> Bergamota, Laranja e Limão
+            </div>
+            <div class="piramide">
+                <strong>Notas de coração:</strong> Notas Aquáticas, Feno e Cedro
+            </div>
+            <div class="piramide">
+                <strong>Notas de fundo:</strong> Almíscaro, Âmbar e Cedro
+            </div>
+        </section>
+
+        <section id="fragancia">
+            <h2>A Fragrância</h2>
+            <p>Uma fragrância fresca e limpa que traz a sensação de liberdade e pureza, perfeita para qualquer dia.</p>
+        </section>
+
+        <section id="frasco">
+            <h2>O Frasco</h2>
+            <p>Frasco azulado de Giorgio Armani que reflete a pureza e frescor aquático da fragrância.</p>
+        </section>
+
+        <section id="quando-usar">
+            <h2>Quando Usar</h2>
+            <p>Ideal para o dia, esportes e momentos que pedem frescor e leveza absoluta.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maison Lumière. Todos os direitos reservados.</p>
+        <p style="margin-top: 15px; font-size: 11px;">Fragrâncias que eternizam presença.</p>
+    </footer>
+
+    <script src="shared-cart.js"></script>
+    <script>
+        function handleScrollHeader() {
+            const headerElement = document.querySelector('header');
+            if (!headerElement) return;
+            if (window.scrollY > 60) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollHeader();
+            window.addEventListener('scroll', handleScrollHeader);
+        });
+    </script>
+</body>
+</html>
